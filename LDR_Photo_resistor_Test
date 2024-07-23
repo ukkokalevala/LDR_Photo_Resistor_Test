@@ -1,0 +1,18 @@
+int ldrPin = A0;  // Define the analog pin connected to the LDR
+int ldrValue = 0; // Variable to store the LDR value
+float voltage = 0; // Variable to store the calculated voltage
+
+void setup() {
+  Serial.begin(9600); // Initialize serial communication at 9600 baud rate
+  pinMode(ldrPin, INPUT); // Set the LDR pin as input
+}
+
+void loop() {
+  ldrValue = analogRead(ldrPin); // Read the analog value from the LDR
+  voltage = ldrValue * (5.0 / 1023.0); // Convert the analog reading to voltage
+  Serial.print("LDR Value: "); // Print label for LDR value
+  Serial.print(ldrValue); // Print the LDR value
+  Serial.print("  Voltage: "); // Print label for voltage
+  Serial.println(voltage); // Print the voltage value
+  delay(1000); // Wait for a second before taking the next reading
+}
